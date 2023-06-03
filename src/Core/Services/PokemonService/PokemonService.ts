@@ -1,3 +1,4 @@
+import { CustomConstants } from "../../Constants/CustomConstants";
 import { BaseService } from "../../Interface/Service/BaseService";
 import { IPokemonService } from "../../Interface/Service/IPokemonService";
 import { PokemonListModel } from "../../Models/PokemonListModel";
@@ -5,10 +6,9 @@ import { PokemonModel } from "../../Models/PokemonModel";
 import { RequestService } from "../RequestService";
 
 export class PokemonService extends BaseService implements IPokemonService {
-    baseRouter = "https://pokeapi.co/api/v2/pokemon";
 
     public async GetPokemonByRange(min: number, max: number): Promise<Array<PokemonModel> | null> {
-        let simplePokemons = await RequestService.Request<PokemonListModel>(this.baseRouter + `?limit=${max}&offset=${min}`)
+        let simplePokemons = await RequestService.Request<PokemonListModel>(CustomConstants.pokeApi + `?limit=${max}&offset=${min}`)
         let fullPokemonList: Array<PokemonModel> = new Array<PokemonModel>();
         
         if (simplePokemons?.results) {
@@ -34,10 +34,10 @@ export class PokemonService extends BaseService implements IPokemonService {
     }
 
     public async GetPokemonByName(name: string): Promise<PokemonModel | null> {
-        return RequestService.Request<PokemonModel>(this.baseRouter + "/" + name);
+        return RequestService.Request<PokemonModel>(CustomConstants.pokeApi + "/" + name);
     }
 
     public async GetPokemonById(id: number): Promise<PokemonModel | null> {
-        return RequestService.Request<PokemonModel>(this.baseRouter + "/" + id);
+        return RequestService.Request<PokemonModel>(CustomConstants.pokeApi + "/" + id);
     }
 }
