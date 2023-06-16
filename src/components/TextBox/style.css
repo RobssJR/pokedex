@@ -1,0 +1,19 @@
+.input-class {
+    background-color: transparent;
+    border-style: none;
+}
+
+.input-div {
+    border: 3px solid purple;
+    border-radius: 5px;
+
+    display: flex;
+
+    width: 300px;
+    margin: auto;
+    align-items: center;
+}
+
+.icon-container {
+    background-color: black;
+}
