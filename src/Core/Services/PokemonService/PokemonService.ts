@@ -11,6 +11,7 @@ export class PokemonService extends BaseService implements IPokemonService {
     public async GetPokemonSpecie(idPokemon: number): Promise<PokemonSpecie | null> {
       return RequestService.Request<PokemonSpecie>(CustomConstants.pokeApi + "pokemon-species/" + idPokemon);
     }
+    
     public async GetPokemonEvolutionChain(idSpecie: number): Promise<EvolutionChain | null> {
       return RequestService.Request<EvolutionChain>(CustomConstants.pokeApi + "evolution-chain/" + idSpecie);
     }

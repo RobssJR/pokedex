@@ -15,14 +15,14 @@ export default function TextBox(props : Props) {
         <div className='icon-container'>
             <MdCatchingPokemon 
                 className='input-icon'
-                size={30}
-                color='red'/>
+                size={30}/>
         </div>
 
         <input 
             className='input-class' 
             type={props.type} 
             onChange={props.onChange}
+            placeholder='Pokemon'
             value={props.value}/>
     </div>
   )

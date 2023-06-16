@@ -1,19 +1,30 @@
 .input-class {
     background-color: transparent;
     border-style: none;
+    width: 100%;
+    height: 100%;
 }
 
 .input-div {
-    border: 3px solid purple;
+    border: 3px solid black;
     border-radius: 5px;
-
     display: flex;
-
     width: 300px;
     margin: auto;
     align-items: center;
+    margin-bottom: 10px;
+    background-color: #DDD;
+}
+
+*:focus {
+    outline: none;
 }
 
 .icon-container {
-    background-color: black;
+    background-color: transparent;
+    margin-right: 5px;
+}
+
+.icon-container {
+    display: flex;
 }
