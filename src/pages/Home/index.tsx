@@ -10,14 +10,14 @@ var pokemonService = new PokemonService()
 
 export const Home = () => {
   const [searchInputValue, setSearchInput] = useState<string>("");
-  const [todosPokemons, setTodosPokemons] = useState<Array<PokemonModel>>([]);
-  const [pokemonFiltroValue, setPokemonFiltro] = useState<Array<PokemonModel>>(
+  const [allPokemon, setAllPokemon] = useState<Array<PokemonModel>>([]);
+  const [pokemonFilterValue, setPokemonFilter] = useState<Array<PokemonModel>>(
     []
   );
 
   useEffect(() => {
     async function fetchPokemon() {
-      if (todosPokemons.length > 0) {
+      if (allPokemon.length > 0) {
         return;
       }
 
@@ -27,26 +27,26 @@ export const Home = () => {
         return;
       }
 
-      setTodosPokemons(pokemon);
-      setPokemonFiltro(pokemon);
+      setAllPokemon(pokemon);
+      setPokemonFilter(pokemon);
     }
 
     fetchPokemon();
-  }, [todosPokemons]);
+  }, [allPokemon]);
 
-  function AlterarPokemons(e: string) {
+  function ChangePokemon(e: string) {
     setSearchInput(e);
 
     if (e === "") {
-      setPokemonFiltro(todosPokemons);
+      setPokemonFilter(allPokemon);
       return;
     }
 
-    const listFiltro = todosPokemons.filter((pokemon) =>
+    const listFiltro = allPokemon.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(e.toLowerCase())
     );
 
-    setPokemonFiltro(listFiltro);
+    setPokemonFilter(listFiltro);
   }
 
   return (
@@ -54,13 +54,14 @@ export const Home = () => {
       <TextBox
         type="text"
         value={searchInputValue}
-        onChange={(e) => AlterarPokemons(e.target.value)}
+        placeholder='Pokemon'
+        onChange={(e) => ChangePokemon(e.target.value)}
       />
 
       <section className="container">
         <div className="pokemon-list">
-          {pokemonFiltroValue.length > 0 &&
-            pokemonFiltroValue.map((pokemon) => (
+          {pokemonFilterValue.length > 0 &&
+            pokemonFilterValue.map((pokemon) => (
               <PokeCard pokemon={pokemon} key={pokemon.id} />
             ))}
         </div>

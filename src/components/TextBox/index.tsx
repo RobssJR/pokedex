@@ -1,12 +1,14 @@
 import './style.css'
+
 import { MdCatchingPokemon } from 'react-icons/md';
 
 import React from 'react'
 
 interface Props {
     type: string,
-    onChange: React.ChangeEventHandler<HTMLInputElement>;
-    value: any
+    onChange: React.ChangeEventHandler<HTMLInputElement>,
+    value: any,
+    placeholder: string
 }
 
 export default function TextBox(props : Props) {
@@ -22,7 +24,7 @@ export default function TextBox(props : Props) {
             className='input-class' 
             type={props.type} 
             onChange={props.onChange}
-            placeholder='Pokemon'
+            placeholder={props.placeholder}
             value={props.value}/>
     </div>
   )

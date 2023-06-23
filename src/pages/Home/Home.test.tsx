@@ -1,9 +1,10 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { Home } from '.';
+import { StringFunctions } from '../../Core/Util/StringFunctions';
 
-test('renders learn react link', () => {
-  render(<Home />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe("string functions", () => {
+  test("capitalize", () => {
+    const value = "pokemon"
+    let valueCapitalize = StringFunctions.Capitalize(value)
+    expect(valueCapitalize).toBe("Pokemon")
+  })
+})
+
