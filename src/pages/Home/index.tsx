@@ -51,13 +51,15 @@ export const Home = () => {
 
   return (
     <div className="App">
-      <TextBox
-        type="text"
-        value={searchInputValue}
-        placeholder='Pokemon'
-        onChange={(e) => ChangePokemon(e.target.value)}
-      />
-
+      <div className='container-textbox'>
+        <TextBox
+          type="text"
+          value={searchInputValue}
+          placeholder='Pokemon'
+          onChange={(e) => ChangePokemon(e.target.value)}
+        />
+      </div>
+      
       <section className="container">
         <div className="pokemon-list">
           {pokemonFilterValue.length > 0 &&
